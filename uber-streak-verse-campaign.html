@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uber Streak-Verse Campaign | Uber India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: #eeeeec;
+  --surface: rgba(255, 255, 255, 0.68);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --ink: #101010;
+  --muted: #5d5d5d;
+  --line: rgba(16, 16, 16, 0.1);
+  --uber-green: #06c167;
+  --green-soft: rgba(6, 193, 103, 0.15);
+  --gold: #f5bf42;
+  --sky: #39a7ff;
+  --coral: #ff6b5f;
+  --shadow-dark: rgba(112, 112, 112, 0.22);
+  --shadow-light: rgba(255, 255, 255, 0.95);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 241, 239, 0.92) 42%, rgba(226, 226, 222, 0.9) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.uber-campaign-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.uber-campaign-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(16, 16, 16, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 16, 16, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 86%);
+}
+
+.section-shell {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.campaign-hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: center;
+  padding: 72px 0 52px;
+}
+
+.moving-road {
+  position: absolute;
+  inset: auto -12vw 0;
+  height: 230px;
+  z-index: -1;
+  overflow: hidden;
+  transform: skewY(-4deg);
+  background: #111;
+  box-shadow: 0 -30px 80px rgba(16, 16, 16, 0.14);
+}
+
+.moving-road::before,
+.moving-road::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 72px,
+    rgba(255, 255, 255, 0.82) 72px 132px,
+    transparent 132px 210px
+  );
+  background-size: 320px 8px;
+  background-position: 0 52%;
+  background-repeat: repeat-x;
+  animation: roadFlow 3.2s linear infinite;
+}
+
+.moving-road::after {
+  opacity: 0.2;
+  background-position: 0 78%;
+  animation-duration: 5s;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    12px 12px 26px rgba(160, 160, 160, 0.18),
+    -10px -10px 24px rgba(255, 255, 255, 0.92);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow i {
+  color: var(--uber-green);
+}
+
+.hero-title {
+  max-width: 820px;
+  margin-top: 22px;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(3rem, 7vw, 6.7rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.hero-title span {
+  display: block;
+  color: var(--uber-green);
+}
+
+.hero-copy {
+  max-width: 680px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.btn {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 15px 22px;
+  border: 0;
+  border-radius: var(--radius-md);
+  font-size: 0.94rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #101010;
+  box-shadow: 14px 18px 32px rgba(16, 16, 16, 0.22);
+}
+
+.btn-secondary {
+  color: var(--ink);
+  background: linear-gradient(145deg, #ffffff, #dddddb);
+  border: 1px solid rgba(255, 255, 255, 0.94);
+  box-shadow:
+    14px 14px 30px var(--shadow-dark),
+    -10px -10px 24px var(--shadow-light);
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.stat-tile,
+.reward-card,
+.insight-card,
+.step-card,
+.channel-card,
+.metric-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(242, 242, 239, 0.52));
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    18px 18px 40px var(--shadow-dark),
+    -12px -12px 30px var(--shadow-light),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(155%);
+}
+
+.stat-tile {
+  min-height: 118px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
+
+.stat-number {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.9rem, 3vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat-tile p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.phone-stage {
+  min-height: 610px;
+  display: grid;
+  place-items: center;
+}
+
+.phone-mockup {
+  position: relative;
+  width: min(390px, 100%);
+  border-radius: 44px;
+  padding: 16px;
+  background: #101010;
+  box-shadow:
+    28px 34px 70px rgba(16, 16, 16, 0.32),
+    -10px -10px 36px rgba(255, 255, 255, 0.92);
+  animation: floatPhone 5.5s ease-in-out infinite;
+}
+
+.phone-screen {
+  overflow: hidden;
+  border-radius: 32px;
+  min-height: 560px;
+  background:
+    linear-gradient(160deg, #ffffff 0%, #f1f3f0 72%, #dff8ec 100%);
+  position: relative;
+  padding: 22px;
+}
+
+.phone-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.mini-route {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 22px;
+  color: #fff;
+  background: #101010;
+}
+
+.route-line {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.route-dot {
+  width: 12px;
+  height: 12px;
+  margin: 5px auto 0;
+  border-radius: 50%;
+  background: var(--uber-green);
+  box-shadow: 0 0 0 7px rgba(6, 193, 103, 0.14);
+}
+
+.route-copy strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.route-copy span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.78rem;
+}
+
+.stamp-panel {
+  margin-top: 18px;
+}
+
+.stamp-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.stamp-title h2 {
+  font-size: 1rem;
+}
+
+.stamp-title span {
+  color: var(--uber-green);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.stamp {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(16, 16, 16, 0.06);
+  border: 1px solid rgba(16, 16, 16, 0.06);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  animation: stampPop 2.8s ease-in-out infinite;
+}
+
+.stamp.done {
+  color: #fff;
+  background: var(--uber-green);
+  border-color: rgba(6, 193, 103, 0.4);
+}
+
+.stamp:nth-child(2) { animation-delay: 0.12s; }
+.stamp:nth-child(3) { animation-delay: 0.24s; }
+.stamp:nth-child(4) { animation-delay: 0.36s; }
+.stamp:nth-child(5) { animation-delay: 0.48s; }
+.stamp:nth-child(6) { animation-delay: 0.6s; }
+.stamp:nth-child(7) { animation-delay: 0.72s; }
+.stamp:nth-child(8) { animation-delay: 0.84s; }
+.stamp:nth-child(9) { animation-delay: 0.96s; }
+.stamp:nth-child(10) { animation-delay: 1.08s; }
+
+.free-ride-ticket {
+  position: relative;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 24px;
+  color: #101010;
+  background:
+    linear-gradient(135deg, rgba(245, 191, 66, 0.9), rgba(6, 193, 103, 0.82));
+  overflow: hidden;
+}
+
+.free-ride-ticket::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.18) 0 8px,
+    transparent 8px 18px
+  );
+}
+
+.free-ride-ticket > * {
+  position: relative;
+  z-index: 1;
+}
+
+.free-ride-ticket small {
+  display: block;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.free-ride-ticket strong {
+  display: block;
+  margin-top: 6px;
+  font-family: "Syne", sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.section-block {
+  padding: 92px 0;
+}
+
+.section-heading {
+  max-width: 820px;
+  margin-bottom: 34px;
+}
+
+.section-kicker {
+  color: var(--uber-green);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin-top: 12px;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2.1rem, 4vw, 4.1rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.section-heading p {
+  margin-top: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.reward-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 22px;
+}
+
+.reward-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  padding: 30px;
+  border-radius: var(--radius-xl);
+}
+
+.reward-card.dark {
+  color: #fff;
+  background:
+    linear-gradient(145deg, rgba(16, 16, 16, 0.98), rgba(38, 38, 38, 0.92));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 26px 30px 62px rgba(16, 16, 16, 0.28);
+}
+
+.reward-card h3,
+.insight-card h3,
+.step-card h3,
+.channel-card h3,
+.metric-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.reward-card p,
+.insight-card p,
+.step-card p,
+.channel-card p,
+.metric-card p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.94rem;
+}
+
+.reward-card.dark p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cycle-track {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  height: 96px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.cycle-track::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.cycle-car {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 58px;
+  height: 34px;
+  transform: translateY(-50%);
+  border-radius: 14px 18px 12px 12px;
+  background: var(--uber-green);
+  box-shadow: 0 0 34px rgba(6, 193, 103, 0.5);
+  animation: carMove 4.5s ease-in-out infinite;
+}
+
+.cycle-car::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 8px;
+  width: 32px;
+  height: 10px;
+  border-radius: 10px 10px 2px 2px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.cycle-car::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -4px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(16, 16, 16, 0.5);
+}
+
+.reward-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.insight-card,
+.step-card,
+.channel-card,
+.metric-card {
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.icon-chip {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 15px;
+  color: #fff;
+  background: #101010;
+}
+
+.icon-chip.green { background: var(--uber-green); }
+.icon-chip.gold { background: var(--gold); color: #101010; }
+.icon-chip.sky { background: var(--sky); }
+.icon-chip.coral { background: var(--coral); }
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.step-number {
+  font-family: "Syne", sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--uber-green);
+}
+
+.activation-band {
+  position: relative;
+  margin: 94px 0 24px;
+  padding: 42px;
+  border-radius: var(--radius-xl);
+  color: #fff;
+  background:
+    linear-gradient(120deg, rgba(16, 16, 16, 0.98), rgba(28, 28, 28, 0.94));
+  overflow: hidden;
+  box-shadow: 30px 38px 80px rgba(16, 16, 16, 0.28);
+}
+
+.activation-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, transparent, rgba(6, 193, 103, 0.18), transparent),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 34px);
+  animation: scan 5.5s linear infinite;
+}
+
+.activation-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+}
+
+.activation-content h2 {
+  max-width: 680px;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.98;
+}
+
+.activation-content p {
+  max-width: 650px;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+}
+
+.qr-box {
+  width: 170px;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+  padding: 16px;
+  border-radius: 26px;
+  background: #fff;
+}
+
+.qr-box span {
+  border-radius: 5px;
+  background: #101010;
+  animation: blinkTile 2.4s ease-in-out infinite;
+}
+
+.qr-box span:nth-child(2n) { animation-delay: 0.2s; }
+.qr-box span:nth-child(3n) { background: var(--uber-green); animation-delay: 0.4s; }
+.qr-box span:nth-child(5n) { opacity: 0; }
+
+.channel-grid,
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric-card strong {
+  display: block;
+  margin-top: 8px;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1;
+}
+
+.metric-card span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.final-cta {
+  padding: 64px 0 92px;
+  text-align: center;
+}
+
+.final-cta-inner {
+  padding: 44px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.final-cta h2 {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  line-height: 0.98;
+}
+
+.final-cta p {
+  max-width: 680px;
+  margin: 18px auto 28px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+@keyframes roadFlow {
+  from { background-position-x: 0; }
+  to { background-position-x: -320px; }
+}
+
+@keyframes floatPhone {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-18px) rotate(1.2deg); }
+}
+
+@keyframes stampPop {
+  0%, 72%, 100% { transform: scale(1); }
+  12% { transform: scale(1.08); }
+}
+
+@keyframes carMove {
+  0%, 8% { left: 20px; }
+  72%, 100% { left: calc(100% - 84px); }
+}
+
+@keyframes scan {
+  from { background-position: -420px 0, 0 0; }
+  to { background-position: 420px 0, 140px 0; }
+}
+
+@keyframes blinkTile {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.82); opacity: 0.55; }
+}
+
+@media (max-width: 980px) {
+  .campaign-hero {
+    min-height: auto;
+    padding-top: 58px;
+  }
+
+  .hero-grid,
+  .reward-grid,
+  .activation-content {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-stage {
+    min-height: auto;
+    padding-top: 20px;
+  }
+
+  .steps-row,
+  .channel-grid,
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .activation-content {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 680px) {
+  .section-shell {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .hero-title {
+    font-size: clamp(2.7rem, 16vw, 4.3rem);
+  }
+
+  .quick-stats,
+  .reward-points,
+  .steps-row,
+  .channel-grid,
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-mockup {
+    border-radius: 34px;
+    padding: 12px;
+  }
+
+  .phone-screen {
+    min-height: 520px;
+    border-radius: 26px;
+    padding: 18px;
+  }
+
+  .stamp-grid {
+    gap: 8px;
+  }
+
+  .stamp {
+    border-radius: 12px;
+  }
+
+  .section-block {
+    padding: 68px 0;
+  }
+
+  .activation-band {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .qr-box {
+    width: 138px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="uber-campaign-page">
+  <section class="campaign-hero">
+    <div class="moving-road" aria-hidden="true"></div>
+    <div class="section-shell hero-grid">
+      <div>
+        <div class="eyebrow"><i class="fa-solid fa-location-arrow"></i> Uber India loyalty campaign</div>
+        <h1 class="hero-title">The Uber <span>Streak-Verse</span></h1>
+        <p class="hero-copy">
+          A digital loyalty stamp-card experience built to make Uber the habitual first-choice platform for Indian commuters. Complete 10 paid rides, unlock the 11th ride on Uber, and keep the commute streak alive.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#campaign-flow">
+            Start the Streak <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a class="btn btn-secondary" href="#campaign-metrics">
+            View Campaign Goal <i class="fa-solid fa-chart-line"></i>
+          </a>
+        </div>
+
+        <div class="quick-stats" aria-label="Campaign objective highlights">
+          <div class="stat-tile">
+            <div class="stat-number">40%</div>
+            <p>Target increase in ride frequency within the campaign period.</p>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-number">90</div>
+            <p>Days to reduce churn and build repeat commute behavior.</p>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-number">11th</div>
+            <p>Guaranteed free ride after every completed 10-ride cycle.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-label="Animated Uber Streak-Verse app preview">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="phone-topbar">
+              <span>Uber Streak-Verse</span>
+              <i class="fa-solid fa-signal"></i>
+            </div>
+
+            <div class="mini-route">
+              <div class="route-line">
+                <span class="route-dot"></span>
+                <div class="route-copy">
+                  <strong>Home to Office</strong>
+                  <span>Ride 8 of 10 is complete</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stamp-panel">
+              <div class="stamp-title">
+                <h2>Your Ride Streak</h2>
+                <span>2 rides left</span>
+              </div>
+              <div class="stamp-grid">
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp done"><i class="fa-solid fa-check"></i></div>
+                <div class="stamp">9</div>
+                <div class="stamp">10</div>
+              </div>
+            </div>
+
+            <div class="free-ride-ticket">
+              <small>Reward unlocked after ride 10</small>
+              <strong>11th ride free</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block" id="campaign-flow">
+    <div class="section-shell">
+      <div class="section-heading">
+        <div class="section-kicker">Campaign idea</div>
+        <h2>Every ride moves the user closer to a visible reward.</h2>
+        <p>
+          The Uber Streak-Verse uses goal-gradient psychology: the closer commuters get to the 10th trip, the stronger their motivation becomes. Instead of comparing apps at every booking moment, users return to Uber because progress is already waiting.
+        </p>
+      </div>
+
+      <div class="reward-grid">
+        <article class="reward-card dark">
+          <h3>Hook: Every 10th trip earns you the 11th on us.</h3>
+          <p>
+            A simple promise that is easy to remember, easy to track, and powerful enough to shift daily commute behavior.
+          </p>
+          <div class="cycle-track" aria-hidden="true">
+            <span class="cycle-car"></span>
+          </div>
+        </article>
+
+        <div class="reward-points">
+          <article class="insight-card">
+            <div class="icon-chip green"><i class="fa-solid fa-repeat"></i></div>
+            <h3>10-ride cycle</h3>
+            <p>Users collect one digital stamp after each eligible Uber ride in India.</p>
+          </article>
+          <article class="insight-card">
+            <div class="icon-chip gold"><i class="fa-solid fa-gift"></i></div>
+            <h3>Guaranteed reward</h3>
+            <p>The 11th ride becomes free, removing uncertainty from the incentive.</p>
+          </article>
+          <article class="insight-card">
+            <div class="icon-chip sky"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Momentum nudges</h3>
+            <p>Push alerts, progress bars, and ride reminders keep users returning.</p>
+          </article>
+          <article class="insight-card">
+            <div class="icon-chip coral"><i class="fa-solid fa-users"></i></div>
+            <h3>Habit building</h3>
+            <p>Repeated successful trips reduce app-switching and lift customer lifetime value.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-shell">
+      <div class="section-heading">
+        <div class="section-kicker">User journey</div>
+        <h2>A four-step loop designed for daily Indian commuters.</h2>
+      </div>
+
+      <div class="steps-row">
+        <article class="step-card">
+          <div class="step-number">01</div>
+          <h3>Join</h3>
+          <p>User taps the Streak-Verse banner inside the Uber app or campaign landing page.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">02</div>
+          <h3>Ride</h3>
+          <p>Every completed eligible trip adds one stamp to the user's progress card.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">03</div>
+          <h3>Unlock</h3>
+          <p>After 10 rides, Uber instantly credits a free 11th ride coupon.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">04</div>
+          <h3>Repeat</h3>
+          <p>The card resets into a new cycle, making Uber the default commute choice.</p>
+        </article>
+      </div>
+
+      <div class="activation-band">
+        <div class="activation-content">
+          <div>
+            <h2>Turn daily rides into a reason to return tomorrow.</h2>
+            <p>
+              Launch across app banners, push notifications, driver-side prompts, metro-city social ads, and workplace commute partnerships in Delhi NCR, Mumbai, Bengaluru, Hyderabad, Pune, Chennai, and Kolkata.
+            </p>
+          </div>
+          <div class="qr-box" aria-label="Decorative campaign scan code">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-shell">
+      <div class="section-heading">
+        <div class="section-kicker">Activation channels</div>
+        <h2>Built to meet commuters before the next booking decision.</h2>
+      </div>
+
+      <div class="channel-grid">
+        <article class="channel-card">
+          <div class="icon-chip green"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>In-app home card</h3>
+          <p>Shows current ride count, reward progress, and remaining trips.</p>
+        </article>
+        <article class="channel-card">
+          <div class="icon-chip sky"><i class="fa-solid fa-bell"></i></div>
+          <h3>Smart reminders</h3>
+          <p>Personalized nudges when users are close to rides 5, 8, and 10.</p>
+        </article>
+        <article class="channel-card">
+          <div class="icon-chip gold"><i class="fa-solid fa-building"></i></div>
+          <h3>Office commute tie-ins</h3>
+          <p>Corporate clusters and tech parks get localized streak messaging.</p>
+        </article>
+        <article class="channel-card">
+          <div class="icon-chip coral"><i class="fa-solid fa-share-nodes"></i></div>
+          <h3>Social streak sharing</h3>
+          <p>Users can share progress badges to create visible participation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block" id="campaign-metrics">
+    <div class="section-shell">
+      <div class="section-heading">
+        <div class="section-kicker">Success metrics</div>
+        <h2>Clear goals for frequency, retention, and lifetime value.</h2>
+      </div>
+
+      <div class="metric-grid">
+        <article class="metric-card">
+          <h3>Ride frequency</h3>
+          <strong>+40%</strong>
+          <span>Increase repeat trips from campaign participants.</span>
+        </article>
+        <article class="metric-card">
+          <h3>Churn reduction</h3>
+          <strong>90d</strong>
+          <span>Measure reduced drop-off within the campaign period.</span>
+        </article>
+        <article class="metric-card">
+          <h3>Reward completion</h3>
+          <strong>10+1</strong>
+          <span>Track how many users complete the full streak cycle.</span>
+        </article>
+        <article class="metric-card">
+          <h3>CLV growth</h3>
+          <strong>↑</strong>
+          <span>Lift total value by making Uber the first-choice habit.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="section-shell final-cta-inner">
+      <h2>Book. Stamp. Repeat. Ride free.</h2>
+      <p>
+        The Uber Streak-Verse turns everyday Indian commutes into a rewarding loop, giving users a clear reason to choose Uber again before they open any other app.
+      </p>
+      <a class="btn btn-primary" href="#campaign-flow">
+        Explore the Streak Cycle <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
